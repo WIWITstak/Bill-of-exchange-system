@@ -1,0 +1,75 @@
+/* CSS переменные для основного стиля ОГАС */
+
+:root {
+    /* Основные цвета */
+    --color-primary: #283046;
+    --color-primary-dark: #1d2333;
+    --color-primary-light: #3b4661;
+    --color-secondary: #f8f9fa;
+    --color-tertiary: #e9ecef;
+    
+    /* Фоновые цвета */
+    --bg-primary: #f5f6fa;
+    --bg-secondary: #eef1f7;
+    --bg-tertiary: #e5e9f2;
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+    
+    /* Цвета текста */
+    --text-primary: #1f2330;
+    --text-secondary: #4a5163;
+    --text-tertiary: #7d8395;
+    --text-white: #ffffff;
+    
+    /* Границы */
+    --border-color: #d5dae5;
+    --border-color-light: #e5e8f1;
+    --border-color-dark: #c5cad6;
+    --border-color-table: #dfe3ed;
+    
+    /* Дополнительные цвета */
+    --color-gray-light: #edeff4;
+    --color-gray-lighter: #f6f7fb;
+    --color-gray-table: #eef2f9;
+    --color-gray-border: #dfe3ec;
+    
+    /* Статусные цвета */
+    --color-success: #28a745;
+    --color-success-dark: #218838;
+    --color-danger: #dc3545;
+    --color-danger-dark: #c82333;
+    --color-warning: #ffc107;
+    --color-info: #17a2b8;
+    
+    /* Радиусы скругления */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 50%;
+    
+    /* Отступы */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+    --spacing-xl: 20px;
+    --spacing-xxl: 24px;
+    
+    /* Тени */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 6px 16px rgba(0, 0, 0, 0.1);
+    
+    /* Переходы */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.2s ease;
+    --transition-slow: 0.3s ease;
+    
+    /* Градиенты */
+    --gradient-primary: var(--color-primary);
+    --gradient-primary-vertical: var(--color-primary);
+    --gradient-primary-horizontal: var(--color-primary);
+}
+
+

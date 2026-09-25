@@ -1,0 +1,171 @@
+/* Универсальные стили для аватаров с изображениями */
+
+/* Все изображения внутри аватаров должны быть круглыми и заполнять контейнер */
+/* Исключаем sidebar-user-avatar-image из общего правила */
+[class*="avatar"] img:not(.sidebar-user-avatar-image),
+[class*="-avatar"] img:not(.sidebar-user-avatar-image),
+img[class*="avatar"]:not(.sidebar-user-avatar-image) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+/* Стили для конкретных типов аватаров с изображениями */
+/* Аватары в боковом меню - фиксированный размер 50px (высокий приоритет) */
+.sidebar-user-avatar-link img,
+.sidebar-user-avatar-image,
+img.sidebar-user-avatar-image {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+    border: 2px solid rgba(255,255,255,0.3) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    flex-shrink: 0 !important;
+}
+
+.user-avatar-large img {
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+.avatar-preview-image {
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+.dashboard-user-avatar img {
+    width: 70px !important;
+    height: 70px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+.table-user-avatar img,
+.profile-avatar-large img,
+.requester-avatar img,
+.message-avatar img,
+.chat-avatar img,
+.telegram-chat-avatar img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+/* Убеждаемся что img внутри аватаров всегда отображается правильно */
+
+
+/* Placeholder с инициалами в боковом меню */
+.sidebar-user-avatar:not(img):not(.sidebar-user-avatar-image) {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+/* Аватары в дашборде и профиле */
+.dashboard-user-avatar img,
+.profile-avatar-large img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Аватары в списках */
+.user-avatar-large img,
+.table-user-avatar img,
+.requester-avatar img,
+.message-avatar img,
+.chat-avatar img,
+.telegram-chat-avatar img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Превью аватара в профиле - большие (120px) */
+.avatar-preview-image {
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border: 3px solid var(--color-primary) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* Обеспечиваем что текст в аватарах обрезается правильно - только одна буква */
+.sidebar-user-avatar:not(img):not(.sidebar-user-avatar-image) {
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    max-width: 50px !important;
+    word-break: keep-all !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-indent: 0 !important;
+    letter-spacing: 0 !important;
+}
+
+.sidebar-user-avatar:not(img),
+.user-avatar-large:not(img),
+.avatar-preview-placeholder:not(img),
+.dashboard-user-avatar:not(img),
+.table-user-avatar:not(img),
+.profile-avatar-large:not(img),
+.requester-avatar:not(img),
+.message-avatar:not(img),
+.chat-avatar:not(img),
+.telegram-chat-avatar:not(img):not(.telegram-avatar-icon) {
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    max-width: 100% !important;
+    word-break: keep-all !important;
+    /* Ограничиваем отображение только первого символа */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* Дополнительная защита - обрезаем все кроме первого символа через CSS */
+    text-indent: 0 !important;
+    letter-spacing: 0 !important;
+}
+

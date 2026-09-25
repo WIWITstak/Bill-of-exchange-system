@@ -1,0 +1,219 @@
+/* Страница: Община */
+
+.community-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.community-header h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.5em;
+}
+
+.community-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.tab-btn-modern {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+    margin-bottom: -2px;
+    position: relative;
+}
+
+.tab-btn-modern:hover {
+    color: var(--color-primary);
+    background: rgba(44, 62, 80, 0.05);
+}
+
+.tab-btn-modern.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+}
+
+.tab-badge {
+    background: var(--color-primary);
+    color: var(--text-white);
+    border-radius: var(--radius-lg);
+    padding: 2px 6px;
+    font-size: 0.75em;
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+}
+
+.community-requests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+.create-request-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.create-request-header {
+    margin-bottom: 30px;
+}
+
+.create-request-header h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 1.5em;
+}
+
+.create-request-header p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.create-request-form-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.my-request-message {
+    background: #f5f6fa;
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.my-request-message-icon {
+    font-size: 1.5em;
+    color: var(--color-primary);
+}
+
+.my-request-message-text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.community-empty {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.community-empty-icon {
+    font-size: 5em;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.community-empty h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+}
+
+.community-empty p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Статусы запросов */
+.status-fulfilled-modern {
+    background: #d4f4dd;
+    color: #155724;
+}
+
+.status-fulfilled-modern .status-dot {
+    background: #28a745;
+}
+
+.status-closed-modern {
+    background: #e2e8f0;
+    color: #2d3748;
+}
+
+.status-closed-modern .status-dot {
+    background: #718096;
+}
+
+.status-cancelled-modern {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.status-cancelled-modern .status-dot {
+    background: #e53e3e;
+}
+
+.request-card-archived {
+    opacity: 0.9;
+}
+
+.request-card-archived:hover {
+    opacity: 1;
+}
+
+/* Участники */
+.participants-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.participant-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.participant-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.participant-name {
+    font-size: 0.9em;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+
+

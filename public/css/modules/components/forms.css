@@ -1,0 +1,645 @@
+/* Компонент: Формы */
+
+/* Базовые стили форм */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Современные формы */
+.form-group-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group-modern label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95em;
+}
+
+.label-icon {
+    font-size: 1.1em;
+}
+
+.form-input-modern,
+.form-textarea-modern {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-lg);
+    font-size: 0.9375rem;
+    transition: all var(--transition-base);
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-input-modern:focus,
+.form-textarea-modern:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.1);
+}
+
+.form-textarea-modern {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-input-disabled {
+    background: #f5f5f5 !important;
+    color: #999 !important;
+    cursor: not-allowed !important;
+}
+
+.form-input-modern.error {
+    border-color: #e53e3e !important;
+    box-shadow: 0 0 0 4px rgba(229, 62, 62, 0.1) !important;
+}
+
+.field-error {
+    color: #e53e3e;
+    font-size: 0.85em;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.field-error::before {
+    content: "⚠";
+    font-size: 1.1em;
+}
+
+.form-hint {
+    display: block;
+    color: #999;
+    font-size: 0.85em;
+    margin-top: 4px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.form-actions-modern {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    flex-wrap: wrap;
+}
+
+.form-actions-modern .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: var(--radius-md);
+}
+
+.form-section h3 {
+    margin-top: 0;
+    color: var(--color-primary);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+/* Форма поручителя */
+.guarantor-form {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.guarantor-form-modern {
+    width: 100%;
+}
+
+.guarantor-form-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.guarantor-form-group {
+    flex: 1;
+}
+
+.guarantor-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9em;
+}
+
+.guarantor-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.guarantor-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+/* Поиск и фильтры */
+.user-search {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.user-list {
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.user-list::-webkit-scrollbar {
+    display: none;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.user-item:hover {
+    background-color: #f9f9f9;
+}
+
+.user-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.user-item span {
+    flex: 1;
+}
+
+.search-filters-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.search-input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3em;
+    color: #999;
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 16px 14px 50px;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.1);
+}
+
+.search-clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #999;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-base);
+    line-height: 1;
+}
+
+.search-clear:hover {
+    background: #f3f4f6;
+    color: var(--text-primary);
+}
+
+/* Фильтры */
+.filters {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+}
+
+.filters label {
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.filters select {
+    margin-top: 5px;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Стили для полей даты и числа в фильтрах */
+input[type="date"].filter-select,
+input[type="number"].filter-select {
+    cursor: text;
+}
+
+input[type="date"].filter-select::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+input[type="date"].filter-select::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+input[type="number"].filter-select::-webkit-inner-spin-button,
+input[type="number"].filter-select::-webkit-outer-spin-button {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.filter-actions-row {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.search-submit-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    padding: 10px 20px;
+    min-width: 120px;
+    justify-content: center;
+}
+
+/* Форма создания запроса */
+.create-request-form {
+    max-width: 600px;
+}
+
+.create-request-form-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Форма редактирования профиля */
+.profile-edit-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.profile-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+    margin-bottom: -2px;
+}
+
+.profile-tab-btn:hover {
+    color: var(--color-primary);
+    background: rgba(44, 62, 80, 0.05);
+}
+
+.profile-tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+}
+
+.profile-tab-btn .tab-icon {
+    font-size: 1.1em;
+}
+
+.profile-tab-content {
+    display: none;
+}
+
+.profile-tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-edit-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.profile-edit-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f5f6fa;
+}
+
+.profile-edit-header h3 {
+    margin: 0 0 8px 0;
+    color: var(--text-primary);
+    font-size: 1.4em;
+}
+
+.profile-edit-header .text-muted {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-edit-form .form-group-modern {
+    margin-bottom: 0;
+}
+
+.profile-edit-form .label-icon {
+    font-size: 1.1em;
+}
+
+.profile-alert {
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-alert.alert-success {
+    background: #d4f4dd;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.profile-alert.alert-error {
+    background: #fed7d7;
+    color: #742a2a;
+    border-left: 4px solid #e53e3e;
+}
+
+.spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Форма создания векселя */
+.create-request-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+}
+
+.create-request-header {
+    margin-bottom: 30px;
+}
+
+.create-request-header h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 1.5em;
+}
+
+/* Дополнительные элементы форм */
+.form-control {
+    padding: 10px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    font-size: 0.95em;
+    font-family: inherit;
+    transition: all var(--transition-base);
+    background: var(--bg-primary);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+.form-control textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Адаптивность для форм */
+@media (max-width: 768px) {
+    .profile-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .profile-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .profile-tab-btn {
+        white-space: nowrap;
+        padding: 10px 16px;
+        font-size: 0.9em;
+    }
+    
+    .profile-edit-card {
+        padding: 16px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions-modern {
+        flex-direction: column;
+    }
+    
+    .form-actions-modern .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .guarantor-form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+
+

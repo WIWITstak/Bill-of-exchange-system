@@ -1,0 +1,323 @@
+/* Страница: Поддержка */
+
+/* Обёртка для фильтров */
+.support-filters-wrapper {
+    margin-bottom: 24px;
+}
+
+.support-filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--bg-primary);
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-btn.active {
+    background: var(--color-primary);
+    color: var(--text-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.3);
+}
+
+.filter-btn i {
+    font-size: 0.9em;
+}
+
+/* Список обращений */
+.tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Карточка обращения */
+.ticket-card-modern {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ticket-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary-vertical);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.ticket-card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.ticket-card-modern:hover::before {
+    opacity: 1;
+}
+
+.ticket-card-header {
+    margin-bottom: 0;
+}
+
+.ticket-card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.ticket-subject {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.ticket-icon {
+    color: var(--color-primary);
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
+
+.ticket-status-badge {
+    padding: 6px 14px;
+    border-radius: var(--radius-lg);
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.status-open {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-in_progress {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-resolved {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-closed {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.ticket-card-body {
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color-light);
+}
+
+.ticket-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.ticket-priority-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.priority-low {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.priority-medium {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.priority-high {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.priority-urgent {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.ticket-date,
+.ticket-messages {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+}
+
+.ticket-date i,
+.ticket-messages i {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+.ticket-card-arrow {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    font-size: 1.2em;
+    transition: all var(--transition-base);
+    opacity: 0;
+}
+
+.ticket-card-modern:hover .ticket-card-arrow {
+    opacity: 1;
+    right: 20px;
+}
+
+/* Пустое состояние */
+.support-empty-state {
+    text-align: center;
+    padding: 80px 30px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: 2px dashed var(--border-color);
+}
+
+.support-empty-icon {
+    font-size: 5em;
+    color: var(--text-tertiary);
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.support-empty-state h3 {
+    margin: 0 0 12px 0;
+    color: var(--text-primary);
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.support-empty-state p {
+    color: var(--text-secondary);
+    margin: 0 0 30px 0;
+    font-size: 1.05em;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.support-empty-state .btn {
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Форма в модальном окне */
+.form-help-text {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-secondary);
+    font-size: 0.875em;
+    line-height: 1.5;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .support-filters {
+        flex-direction: column;
+    }
+
+    .filter-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ticket-card-main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ticket-subject {
+        font-size: 1em;
+    }
+
+    .ticket-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .ticket-card-arrow {
+        display: none;
+    }
+
+    .support-empty-state {
+        padding: 60px 20px;
+    }
+
+    .support-empty-icon {
+        font-size: 4em;
+    }
+}
+
+
+
+
+
+

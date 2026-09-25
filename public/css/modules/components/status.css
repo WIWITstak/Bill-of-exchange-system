@@ -1,0 +1,158 @@
+/* Компонент: Статусы и значки */
+
+.status {
+    padding: 4px 12px;
+    border-radius: var(--radius-lg);
+    font-size: 0.9em;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-pending {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.status-active {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.status-completed {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.status-cancelled {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.status-active {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.status-fulfilled-modern {
+    background: #d4f4dd;
+    color: #155724;
+}
+
+.status-fulfilled-modern .status-dot {
+    background: #28a745;
+}
+
+.status-closed-modern {
+    background: #e2e8f0;
+    color: #2d3748;
+}
+
+.status-closed-modern .status-dot {
+    background: #718096;
+}
+
+.status-cancelled-modern {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.status-cancelled-modern .status-dot {
+    background: #e53e3e;
+}
+
+.status-open-modern {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-open-modern .status-dot {
+    background: #3b82f6;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: var(--radius-lg);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.status-active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-paid {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-overdue {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-active-modern {
+    background: #d4f4dd;
+    color: #155724;
+}
+
+.status-inactive-modern {
+    background: #ffeaa7;
+    color: #856404;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+}
+
+.status-active-modern .status-dot {
+    background: #28a745;
+}
+
+.status-inactive-modern .status-dot {
+    background: #ffc107;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--color-primary);
+    color: var(--text-white);
+    border-radius: var(--radius-lg);
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.notification-badge {
+    display: inline-block;
+    background: #dc3545;
+    color: var(--text-white);
+    border-radius: var(--radius-lg);
+    padding: 2px 8px;
+    font-size: 0.75em;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.request-card-archived {
+    opacity: 0.9;
+}
+
+.request-card-archived:hover {
+    opacity: 1;
+}
+
+
+
+

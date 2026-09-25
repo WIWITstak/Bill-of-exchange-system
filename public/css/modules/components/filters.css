@@ -1,0 +1,430 @@
+/* Компонент: Фильтры */
+
+/* Обертка для фильтров с кнопкой toggle */
+.filters-wrapper {
+    margin-bottom: 20px;
+    overflow: visible;
+}
+
+.filters-toggle-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    user-select: none;
+    transition: all var(--transition-base);
+    margin-bottom: 0;
+    position: relative;
+}
+
+.filters-toggle-header > * {
+    pointer-events: none;
+}
+
+.filters-toggle-header:hover {
+    background: var(--bg-secondary);
+    border-color: var(--color-primary);
+}
+
+.filters-toggle-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+}
+
+.filters-toggle-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    display: inline-block;
+}
+
+.filters-toggle-header:not(.collapsed) .filters-toggle-icon {
+    transform: rotate(0deg);
+}
+
+.filters-toggle-header.collapsed .filters-toggle-icon {
+    transform: rotate(-90deg);
+}
+
+/* Компактная карточка фильтров */
+.search-filters-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    overflow: visible;
+}
+
+/* Для начального состояния без анимации (предотвращает мигание) */
+.search-filters-card.collapsed:not(.expanded),
+.search-filters-card[style*="max-height: 0"] {
+    transition: none !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
+}
+
+/* Включаем transition только после инициализации */
+.search-filters-card.initialized {
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out;
+}
+
+.search-filters-card.collapsed,
+.filters.collapsed,
+.telegram-filters.collapsed,
+.search-filters-card-compact.collapsed {
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    opacity: 0;
+    overflow: hidden;
+    display: block !important;
+}
+
+.search-filters-card.expanded,
+.filters.expanded,
+.telegram-filters.expanded,
+.search-filters-card-compact.expanded {
+    max-height: 1000px !important;
+    opacity: 1;
+    display: block !important;
+    overflow: visible !important;
+    padding: 16px !important;
+    margin: 0 !important;
+}
+
+.search-filters-card,
+.filters,
+.telegram-filters,
+.search-filters-card-compact {
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}
+
+/* Компактные стили для фильтров */
+.search-filters-form {
+    margin: 0;
+}
+
+.search-input-group {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all var(--transition-base);
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+.search-clear {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: var(--text-secondary);
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-base);
+    line-height: 1;
+}
+
+.search-clear:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.filters-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 140px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.8125rem;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: border-color var(--transition-base);
+    box-sizing: border-box;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+.filter-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: border-color var(--transition-base);
+    box-sizing: border-box;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+/* Стили для полей даты и числа в фильтрах */
+input[type="date"].filter-select,
+input[type="date"].filter-input,
+input[type="number"].filter-select,
+input[type="number"].filter-input {
+    cursor: text;
+}
+
+input[type="date"].filter-select::-webkit-calendar-picker-indicator,
+input[type="date"].filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+input[type="date"].filter-select::-webkit-calendar-picker-indicator:hover,
+input[type="date"].filter-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+input[type="number"].filter-select::-webkit-inner-spin-button,
+input[type="number"].filter-select::-webkit-outer-spin-button,
+input[type="number"].filter-input::-webkit-inner-spin-button,
+input[type="number"].filter-input::-webkit-outer-spin-button {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.filter-actions .btn {
+    white-space: nowrap;
+    padding: 8px 16px;
+    font-size: 0.9375rem;
+}
+
+/* Специальный класс для filter-group с чекбоксом */
+.filter-group-checkbox {
+    display: flex;
+    align-items: flex-end;
+}
+
+.filter-group-checkbox .checkbox-filter-label {
+    white-space: nowrap;
+}
+
+/* Старые стили для обратной совместимости */
+.filters {
+    background: var(--bg-primary);
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.filters label {
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 12px;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.filters select {
+    margin-top: 4px;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+}
+
+/* Специальные стили для компактных фильтров депозитария */
+.search-filters-card-compact {
+    padding: 12px 16px !important;
+}
+
+.filters-row-compact {
+    gap: 10px !important;
+}
+
+.filter-select-compact,
+.filter-input-compact {
+    padding: 6px 10px !important;
+    font-size: 0.875rem !important;
+}
+
+/* Стили для telegram-filters в chats (обратная совместимость) */
+.telegram-filters {
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.filters-wrapper.collapsed .telegram-filters {
+    display: none;
+}
+
+.filters-wrapper.expanded .telegram-filters {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Стили для фильтров чатов с search-filters-card */
+.chats-filters-wrapper {
+    margin-bottom: 12px;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+}
+
+.chats-filters-wrapper .filters-toggle-header {
+    padding: 8px 12px;
+    margin-bottom: 0;
+}
+
+.chats-filters-wrapper .filters-toggle-title {
+    font-size: 0.875rem;
+}
+
+.chats-filters-wrapper .search-filters-card {
+    padding: 12px;
+    overflow: visible;
+    position: relative;
+}
+
+.chats-filters-wrapper .search-filters-card.expanded {
+    overflow: visible !important;
+    padding: 12px !important;
+    max-height: 1000px !important;
+}
+
+.chats-filters-wrapper .search-filters-card.collapsed {
+    overflow: hidden;
+    padding: 0 !important;
+    max-height: 0 !important;
+}
+
+.chats-filters-wrapper .search-input-group {
+    margin-bottom: 10px;
+}
+
+.chats-filters-wrapper .filters-row {
+    gap: 10px;
+}
+
+.chats-filters-wrapper .filter-group {
+    min-width: 120px;
+}
+
+.chats-filters-wrapper .filter-group label {
+    font-size: 0.75rem;
+    margin-bottom: 3px;
+}
+
+.chats-filters-wrapper .filter-select {
+    padding: 6px 10px;
+    font-size: 0.8125rem;
+}
+
+.chats-filters-wrapper .checkbox-filter-label {
+    padding: 6px 10px;
+    height: 32px;
+}
+
+.chats-filters-wrapper .checkbox-filter-text {
+    font-size: 0.8125rem;
+}
+
+.chats-filters-wrapper .filter-actions .btn {
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+}
+
+
+

@@ -1,0 +1,732 @@
+/* Страница: Рейтинг */
+
+.rating-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Главные карточки рейтинга */
+.rating-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.rating-card-modern {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.rating-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.rating-card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.rating-card-modern:hover::before {
+    opacity: 1;
+}
+
+.rating-card-primary::before {
+    background: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
+}
+
+.rating-card-secondary::before {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.rating-card-icon {
+    font-size: 3.5em;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(44, 62, 80, 0.05) 100%);
+    transition: all var(--transition-base);
+}
+
+.rating-card-primary .rating-card-icon {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.1) 100%);
+}
+
+.rating-card-secondary .rating-card-icon {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(102, 126, 234, 0.1) 100%);
+}
+
+.rating-card-modern:hover .rating-card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.rating-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.rating-card-label {
+    font-size: 0.875em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rating-value-large {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.rating-card-sublabel {
+    font-size: 0.875em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.rating-card-trend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.trend-indicator {
+    font-size: 1.8em;
+}
+
+.trend-text {
+    font-size: 0.75em;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Компоненты рейтинга */
+.rating-components-section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.component-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.component-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary-vertical);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.component-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.component-card:hover::before {
+    opacity: 1;
+}
+
+.component-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.component-icon {
+    font-size: 2.5em;
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.15) 0%, rgba(44, 62, 80, 0.05) 100%);
+    transition: all var(--transition-base);
+}
+
+.component-card:hover .component-icon {
+    transform: scale(1.1);
+}
+
+.component-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.component-name {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.component-value {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.progress-bar-wrapper {
+    margin: 16px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-radius: var(--radius-full);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.progress-label {
+    font-size: 0.8125em;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.component-description {
+    font-size: 0.875em;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    margin-top: 12px;
+}
+
+.component-details-btn {
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    font-size: 0.875em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.component-details-btn:hover {
+    background: var(--color-primary);
+    color: var(--text-white);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.component-details-btn i {
+    font-size: 0.9em;
+}
+
+/* Формулы */
+.rating-formulas-section {
+    margin-bottom: 32px;
+}
+
+.formulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+}
+
+.formula-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.formula-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+}
+
+.formula-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+}
+
+.formula-card:hover::after {
+    transform: scaleX(1);
+}
+
+.formula-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.formula-icon {
+    font-size: 2em;
+    flex-shrink: 0;
+}
+
+.formula-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.formula-body {
+    margin-top: 16px;
+}
+
+.formula-text {
+    font-size: 0.9375em;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-primary);
+}
+
+.formula-calculation {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-top: 12px;
+    border: 1px solid var(--border-color-light);
+}
+
+.calculation-step {
+    font-size: 0.875em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.calculation-result {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px solid var(--border-color);
+}
+
+.formula-details-btn {
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    font-size: 0.875em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.formula-details-btn:hover {
+    background: var(--color-primary);
+    color: var(--text-white);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.formula-details-btn i {
+    font-size: 0.9em;
+}
+
+/* Графики */
+.charts-carousel-section {
+    margin-top: 40px;
+}
+
+.charts-carousel-section h3 {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.charts-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--bg-primary);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.charts-carousel-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.chart-card {
+    background: transparent;
+    border-radius: var(--radius-lg);
+    padding: 0;
+}
+
+.chart-card h3 {
+    margin: 0 0 20px 0;
+    color: var(--text-primary);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.chart-info {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color-light);
+    font-size: 0.875em;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Кнопки карусели */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-primary);
+    background: var(--bg-primary);
+    color: var(--color-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-btn:hover {
+    background: var(--color-primary);
+    color: var(--text-white);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn-prev {
+    left: 12px;
+}
+
+.carousel-btn-next {
+    right: 12px;
+}
+
+/* Индикаторы карусели */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color-light);
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+    background: var(--border-color);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+}
+
+.carousel-indicator:hover {
+    background: var(--color-primary);
+    transform: scale(1.3);
+}
+
+.carousel-indicator.active {
+    background: var(--color-primary);
+    width: 32px;
+    border-radius: var(--radius-full);
+    border-color: var(--color-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .rating-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .rating-main-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .components-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .formulas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rating-value-large {
+        font-size: 2em;
+    }
+}
+
+/* Стили для детализации в модальном окне */
+.metric-detail-section {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.metric-detail-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.metric-detail-section h4 {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.metric-detail-section p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.metric-detail-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.metric-detail-section li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+
+.metric-detail-section li:last-child {
+    margin-bottom: 0;
+}
+
+.metric-detail-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+.metric-detail-section th,
+.metric-detail-section td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.metric-detail-section th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.metric-detail-section td {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .rating-card-modern {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 16px;
+    }
+    
+    .rating-card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.5em;
+    }
+    
+    .rating-card-trend {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .component-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .component-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 2em;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+    
+    .carousel-btn-prev {
+        left: 8px;
+    }
+    
+    .carousel-btn-next {
+        right: 8px;
+    }
+    
+    .formula-card {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.2em;
+    }
+}

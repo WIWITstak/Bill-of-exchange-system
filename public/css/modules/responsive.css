@@ -1,0 +1,821 @@
+/* Адаптивные стили (медиа-запросы) */
+
+/* Планшеты и меньше (1024px) */
+@media (max-width: 1024px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-row-compact {
+        gap: 8px;
+    }
+    
+    .search-input-group-compact {
+        min-width: 180px;
+    }
+    
+    .filter-select-compact {
+        min-width: 120px;
+    }
+    
+    .date-input,
+    .amount-input {
+        width: 100px;
+    }
+}
+
+/* Мобильные устройства (768px) */
+@media (max-width: 768px) {
+    /* Убираем масштабирование на мобильных устройствах */
+    html {
+        width: 100% !important;
+        transform: scale(1) !important;
+        min-height: 100% !important;
+        height: auto !important;
+        overflow-y: auto !important;
+    }
+    
+    body {
+        min-height: 100vh !important;
+        height: auto !important;
+        overflow-y: auto !important;
+    }
+    
+    /* Sidebar скрывается на мобильных */
+    .sidebar {
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease;
+        width: 260px !important;
+        height: 100vh !important;
+        left: 0 !important;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0) !important;
+    }
+    
+    .sidebar.hidden {
+        transform: translateX(-100%) !important;
+    }
+    
+    .sidebar.collapsed {
+        transform: translateX(-100%) !important;
+        width: 260px !important;
+    }
+    
+    .sidebar.collapsed.active,
+    .sidebar.hidden.active {
+        transform: translateX(0) !important;
+    }
+    
+    .sidebar-toggle-collapse {
+        display: none !important;
+    }
+    
+    .sidebar-toggle-close {
+        display: block !important;
+    }
+    
+    .sidebar-toggle {
+        display: block !important;
+    }
+    
+    .app-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: calc(100vh - 70px);
+        overflow-y: visible !important;
+    }
+    
+    .sidebar.collapsed ~ .app-content,
+    .sidebar.hidden ~ .app-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* На мобильных разрешаем прокрутку всего layout */
+    .app-layout {
+        min-height: 100vh !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 70px;
+    }
+    
+    /* Показываем мобильное меню */
+    .mobile-bottom-nav {
+        display: flex;
+    }
+    
+    /* Отступ снизу для контента из-за мобильного меню */
+    .app-main {
+        padding-bottom: 100px !important;
+        min-height: calc(100vh - 150px);
+    }
+    
+    .app-header {
+        padding: 12px 15px;
+    }
+    
+    .app-title {
+        font-size: 1.3em;
+    }
+    
+    .notifications-panel {
+        top: 60px;
+        right: 10px;
+        width: calc(100vw - 20px);
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 20px 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .user-menu {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .main-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+    }
+    
+    .main-nav::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .main-nav::-webkit-scrollbar-thumb {
+        background: #ddd;
+        border-radius: 2px;
+    }
+    
+    section {
+        padding: 15px;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .dashboard-header .header-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .bills-statistics,
+    .transaction-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bills-table,
+    .transactions-table {
+        font-size: 0.9em;
+    }
+    
+    .bills-table th,
+    .bills-table td,
+    .transactions-table th,
+    .transactions-table td {
+        padding: 8px 6px;
+    }
+    
+    .filters {
+        flex-direction: column;
+    }
+    
+    .filters label {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    
+    .charts-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .user-search {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Профиль */
+    .profile-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .profile-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .profile-tab-btn {
+        white-space: nowrap;
+        padding: 10px 16px;
+        font-size: 0.9em;
+    }
+    
+    .profile-edit-card {
+        padding: 16px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions-modern {
+        flex-direction: column;
+    }
+    
+    .form-actions-modern .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Рейтинг */
+    .rating-main-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .components-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .formulas-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .rating-value-large {
+        font-size: 2.2em;
+    }
+    
+    .rating-card-modern {
+        padding: 16px;
+    }
+    
+    .component-card,
+    .formula-card {
+        padding: 14px;
+    }
+    
+    /* Чаты */
+    .chat-card-modern {
+        padding: 12px 14px;
+    }
+    
+    .chat-avatar {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2em;
+    }
+    
+    .chat-card-title {
+        font-size: 1em;
+    }
+    
+    .chat-card-meta-row {
+        font-size: 0.75em;
+    }
+    
+    .chat-card-preview {
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+    
+    .btn-open-chat {
+        min-width: 120px;
+        padding: 7px 12px;
+    }
+    
+    .btn-chat-secondary {
+        padding: 7px 14px;
+    }
+    
+    .chat-send-text {
+        display: none;
+    }
+    
+    .chat-send-btn {
+        padding: 8px 12px;
+        width: 36px;
+        justify-content: center;
+    }
+    
+    .chat-container {
+        height: calc(100vh - 200px);
+        min-height: 350px;
+        max-height: calc(100vh - 150px);
+        margin-top: 15px;
+        border-radius: var(--radius-md);
+    }
+    
+    .chat-messages {
+        padding: 10px 12px;
+        gap: 6px;
+    }
+    
+    .message-item {
+        max-width: 85%;
+        gap: 6px;
+    }
+    
+    .message-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95em;
+    }
+    
+    .message-body {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+    
+    .chat-input-wrapper {
+        padding: 12px 15px;
+    }
+    
+    .chat-textarea {
+        min-height: 45px;
+        font-size: 0.9em;
+    }
+    
+    /* Депозитарий */
+    .search-filters-card-compact {
+        padding: 10px 12px;
+    }
+    
+    .filters-row-compact {
+        gap: 8px;
+    }
+    
+    .search-input-group-compact {
+        min-width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .filter-select-compact {
+        min-width: 100%;
+    }
+    
+    .date-range-compact,
+    .amount-range-compact {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .date-input,
+    .amount-input {
+        width: 100%;
+    }
+    
+    .depository-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .depository-bulk-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .depository-bulk-actions button {
+        width: 100%;
+    }
+    
+    .depository-table-wrapper {
+        overflow-x: scroll;
+    }
+    
+    /* Уведомления */
+    .notifications-panel {
+        width: calc(100vw - 40px);
+        right: 20px;
+        top: 70px;
+        max-height: calc(100vh - 100px);
+    }
+    
+    .notification-item {
+        padding: 10px;
+    }
+    
+    .notification-icon {
+        font-size: 1.5em;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .notifications-dropdown {
+        margin-right: 5px;
+    }
+    
+    .notification-bell {
+        font-size: 1.3em;
+        padding: 6px 10px;
+    }
+    
+    /* Графики */
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-card {
+        min-height: 350px;
+        padding: 15px;
+    }
+    
+    .chart-card canvas {
+        max-height: 250px;
+    }
+    
+    /* Пагинация */
+    .pagination-wrapper {
+        padding: 15px;
+    }
+    
+    .pagination {
+        gap: 4px;
+    }
+    
+    .pagination-btn {
+        padding: 6px 10px;
+        font-size: 0.85em;
+        min-width: 32px;
+        height: 32px;
+    }
+    
+    .pagination-btn-prev,
+    .pagination-btn-next {
+        padding: 6px 12px;
+    }
+    
+    .pagination-info {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    
+    /* Профиль пользователя */
+    .profile-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .profile-avatar-section {
+        width: 100%;
+    }
+    
+    .profile-actions {
+        width: 100%;
+    }
+    
+    .btn-profile-action {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .profile-content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .charts-compact {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid-mini {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Dashboard */
+    .dashboard-user-header {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+    }
+    
+    .dashboard-user-avatar {
+        align-self: center;
+    }
+    
+    .dashboard-user-main {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .dashboard-user-meta {
+        justify-content: center;
+    }
+    
+    .dashboard-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-user-actions {
+        flex-direction: column;
+    }
+    
+    .dashboard-action-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .dashboard-quick-actions {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 6px;
+    }
+    
+    .quick-action-card {
+        padding: 6px 4px;
+    }
+    
+    .quick-action-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 1em;
+    }
+    
+    .quick-action-title {
+        font-size: 0.7em;
+    }
+    
+    .quick-actions-settings-content {
+        max-height: 300px;
+    }
+    
+    /* Компания */
+    .company-header {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+    }
+    
+    .company-icon {
+        align-self: center;
+    }
+    
+    .company-main {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .company-meta {
+        justify-content: center;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .info-label {
+        min-width: auto;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+    
+    /* Карусель графиков */
+    .charts-carousel {
+        padding: 15px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+    
+    .carousel-btn-prev {
+        left: 10px;
+    }
+    
+    .carousel-btn-next {
+        right: 10px;
+    }
+    
+    .carousel-slide .chart-card {
+        padding: 20px;
+    }
+    
+    .carousel-slide .chart-card canvas {
+        max-height: 200px;
+    }
+    
+    .carousel-indicators {
+        margin-top: 20px;
+        gap: 8px;
+    }
+    
+    /* Таблицы */
+    .depository-table-wrapper {
+        overflow-x: scroll;
+    }
+    
+    .depository-table-modern {
+        min-width: 800px;
+    }
+    
+    .table-description {
+        max-width: 150px;
+    }
+    
+    /* Карточки */
+    .request-stats-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .users-grid,
+    .chats-grid,
+    .community-requests-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Очень маленькие экраны (480px) */
+@media (max-width: 480px) {
+    .mobile-bottom-nav {
+        padding: 6px 0;
+        padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    }
+    
+    .mobile-nav-item {
+        padding: 6px 8px;
+        gap: 3px;
+        margin: 0 2px;
+    }
+    
+    .mobile-nav-icon {
+        font-size: 1.3em;
+    }
+    
+    .mobile-nav-label {
+        font-size: 0.65em;
+    }
+    
+    .mobile-nav-badge {
+        top: 4px;
+        right: 4px;
+        padding: 1px 4px;
+        font-size: 0.6em;
+        min-width: 14px;
+    }
+    
+    .bills-statistics,
+    .transaction-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .header-actions .btn {
+        width: auto;
+    }
+    
+    /* Убираем масштабирование на очень маленьких экранах */
+    html {
+        width: 100% !important;
+        transform: scale(1) !important;
+        height: auto !important;
+        overflow-y: auto !important;
+    }
+    
+    body {
+        min-height: 100vh !important;
+        height: auto !important;
+        overflow-y: auto !important;
+    }
+    
+    .sidebar {
+        width: 260px !important;
+        height: 100vh !important;
+    }
+    
+    .app-layout {
+        min-height: 100vh !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .app-content {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+    }
+    
+    .app-main {
+        padding-bottom: 100px !important;
+    }
+    
+    /* Dashboard быстрые действия */
+    .dashboard-quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .dashboard-quick-actions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .btn-quick-actions-settings {
+        width: 100%;
+        justify-content: center;
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+    
+    .btn-stats-settings {
+        width: 100%;
+        justify-content: center;
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+    
+    .quick-action-card {
+        padding: 6px 4px;
+    }
+    
+    .quick-action-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 4px;
+        font-size: 1em;
+    }
+    
+    .quick-action-title {
+        font-size: 0.65em;
+    }
+    
+    /* Карусель графиков */
+    .charts-carousel {
+        padding: 10px;
+    }
+    
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+    
+    .carousel-btn-prev {
+        left: 5px;
+    }
+    
+    .carousel-btn-next {
+        right: 5px;
+    }
+    
+    .carousel-slide .chart-card {
+        padding: 15px;
+    }
+    
+    .carousel-slide .chart-card h3 {
+        font-size: 1.1em;
+    }
+    
+    .carousel-slide .chart-card canvas {
+        max-height: 180px;
+    }
+}
+
+
+
+

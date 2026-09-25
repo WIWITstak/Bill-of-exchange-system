@@ -1,0 +1,333 @@
+/* Компонент: Таблицы */
+
+/* Базовые таблицы */
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.transactions-table th,
+.transactions-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.transactions-table th {
+    background: #f9f9f9;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.transactions-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.bills-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bills-table th,
+.bills-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.bills-table th {
+    background: #f9f9f9;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Группировка векселей по транзакциям */
+.transaction-group-header {
+    background: #f5f6fa !important;
+    border-top: 2px solid var(--color-primary) !important;
+}
+
+.transaction-group-header td {
+    padding: 12px 16px !important;
+    border-bottom: 1px solid #e0e7ff !important;
+}
+
+.transaction-group-item {
+    background: var(--bg-primary);
+}
+
+.transaction-group-item:hover {
+    background: #fafbff;
+}
+
+.transaction-group-item td {
+    padding-left: 32px !important;
+    position: relative;
+}
+
+.transaction-group-item td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 60%;
+    background: var(--color-primary);
+    opacity: 0.3;
+}
+
+/* Таблица депозитария */
+.depository-table-wrapper {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    overflow-x: auto;
+}
+
+.depository-table-modern {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    min-width: 1000px;
+}
+
+.depository-table-modern thead {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.depository-table-modern thead th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+    border-bottom: 2px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+.depository-table-modern tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.2s;
+}
+
+.depository-table-modern tbody tr:hover {
+    background-color: var(--color-gray-table);
+}
+
+.depository-table-modern tbody tr.transaction-row {
+    border-bottom: 2px solid #cbd5e0;
+    background-color: var(--bg-primary);
+}
+
+.depository-table-modern tbody tr.transaction-row:hover {
+    background-color: var(--color-gray-table);
+}
+
+.depository-table-modern tbody tr.bill-row {
+    border-bottom: 1px solid #e2e8f0;
+    background-color: #fafbfc;
+    position: relative;
+    transition: opacity 0.3s ease, display 0.2s ease;
+}
+
+.depository-table-modern tbody tr.bill-row:hover {
+    background-color: #f0f4f8;
+}
+
+.depository-table-modern tbody tr.bill-row td:empty {
+    border: none;
+    padding: 0;
+    min-width: 0;
+    width: auto;
+}
+
+.depository-table-modern tbody tr.bill-row td:not(:empty) {
+    padding-left: 30px;
+}
+
+.depository-table-modern tbody tr.bill-row td:first-of-type {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 27px !important;
+}
+
+.depository-table-modern tbody tr.bill-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--color-primary);
+    opacity: 0.3;
+}
+
+.depository-table-modern tbody tr.bill-row[style*="display: none"] {
+    display: none !important;
+}
+
+.depository-table-modern tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    color: #555;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.transaction-row td.toggle-cell {
+    padding: 8px 4px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.depository-table-modern input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+/* Элементы таблиц */
+.table-id-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #edf2f7;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.9em;
+}
+
+.table-date {
+    color: #718096;
+    font-size: 0.9em;
+}
+
+.table-user-link {
+    color: #2d3748;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    display: block;
+}
+
+.table-user-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.table-description {
+    color: #4a5568;
+    max-width: 300px;
+    display: block;
+}
+
+.table-bill-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.table-bill-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.table-bill-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+.table-bill-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+.bill-detail-item {
+    display: flex;
+    gap: 8px;
+}
+
+.bill-detail-label {
+    color: #718096;
+    font-weight: 500;
+}
+
+.bill-detail-value {
+    color: #2d3748;
+}
+
+.bill-expired {
+    color: #e53e3e;
+    font-weight: 600;
+}
+
+.bill-today {
+    color: #d69e2e;
+    font-weight: 600;
+}
+
+.bill-soon {
+    color: #dd6b20;
+    font-weight: 600;
+}
+
+.table-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.bills-count-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #edf2f7;
+    border-radius: var(--radius-lg);
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-left: 4px;
+}
+
+.bills-count-display {
+    font-weight: 500;
+}
+
+.clickable-row {
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #f0f4f8 !important;
+}
+
+/* Адаптивность для таблиц */
+@media (max-width: 768px) {
+    .depository-table-wrapper {
+        overflow-x: scroll;
+    }
+    
+    .depository-table-modern {
+        min-width: 800px;
+    }
+    
+    .table-description {
+        max-width: 150px;
+    }
+}
+
+
+

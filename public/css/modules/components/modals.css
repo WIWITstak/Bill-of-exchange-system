@@ -1,0 +1,347 @@
+/* Компонент: Модальные окна */
+
+/* Базовое модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: var(--bg-primary);
+    margin: 40px auto;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s ease;
+    max-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid #e2e8f0;
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--text-white);
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    line-height: 1;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 20px 25px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-footer {
+    padding: 15px 25px;
+    border-top: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Модальное окно с векселями */
+.bills-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+    overflow-y: auto;
+}
+
+.bills-modal-content {
+    background-color: var(--bg-primary);
+    margin: 40px auto;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s ease;
+    max-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+.bills-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid #e2e8f0;
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.bills-modal-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.bills-modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--text-white);
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    line-height: 1;
+}
+
+.bills-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.bills-modal-body {
+    padding: 20px 25px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.bills-modal-table-wrapper {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+.bills-modal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bills-modal-table thead {
+    background: var(--color-gray-table);
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.bills-modal-table th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bills-modal-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.2s;
+}
+
+.bills-modal-table tbody tr:hover {
+    background-color: var(--color-gray-table);
+}
+
+.bills-modal-table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.modal-bulk-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: var(--color-gray-table);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-primary);
+    margin-bottom: 15px;
+}
+
+/* Модальное окно создания векселя */
+.bill-create-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+    overflow-y: auto;
+}
+
+.bill-create-modal-content {
+    background-color: var(--bg-primary);
+    margin: 40px auto;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s ease;
+    max-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+.bill-create-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid #e2e8f0;
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.bill-create-modal-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.bill-create-modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--text-white);
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    line-height: 1;
+}
+
+.bill-create-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.bill-create-modal-body {
+    padding: 20px 25px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.bill-create-modal-footer {
+    padding: 15px 25px;
+    border-top: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Адаптивность для модальных окон */
+@media (max-width: 768px) {
+    .modal-content,
+    .bills-modal-content,
+    .bill-create-modal-content {
+        width: 95%;
+        margin: 20px auto;
+        max-height: calc(100vh - 40px);
+    }
+    
+    .modal-header,
+    .bills-modal-header,
+    .bill-create-modal-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-body,
+    .bills-modal-body,
+    .bill-create-modal-body {
+        padding: 15px 20px;
+    }
+    
+    .modal-footer,
+    .bill-create-modal-footer {
+        padding: 12px 20px;
+        flex-direction: column;
+    }
+    
+    .modal-footer .btn,
+    .bill-create-modal-footer .btn {
+        width: 100%;
+    }
+}
+
+
+
+
