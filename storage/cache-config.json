@@ -1,0 +1,17 @@
+{
+    "enabled": true,
+    "logging_enabled": true,
+    "default_ttl": 3600,
+    "ttl": {
+        "categories": 3600,
+        "ratings": 300,
+        "users": 1800,
+        "statistics": 600,
+        "settings": 86400
+    },
+    "auto_cleanup": true,
+    "cleanup_interval_hours": 24,
+    "max_cache_size_mb": 91,
+    "updated_at": "2025-12-09 01:42:45",
+    "updated_by": 2
+}

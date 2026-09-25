@@ -1,0 +1,7 @@
+{
+    "require": {
+        "cboden/ratchet": "^0.4.4",
+        "react/socket": "^1.15",
+        "tecnickcom/tcpdf": "^6.10"
+    }
+}
