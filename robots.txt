@@ -1,0 +1,147 @@
+# robots.txt для ОГАС (Общегосударственная автоматизированная система)
+# https://xn--80af6ao.xn--p1ai
+
+# Разрешаем всем поисковым роботам индексировать сайт
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию служебных директорий и файлов
+Disallow: /admin/
+Disallow: /api/
+Disallow: /config/
+Disallow: /src/
+Disallow: /vendor/
+Disallow: /storage/
+Disallow: /database/
+Disallow: /tests/
+Disallow: /websocket/
+
+# Запрещаем индексацию приватных страниц
+Disallow: /dashboard.php
+Disallow: /profile/
+Disallow: /transactions/
+Disallow: /bills/
+Disallow: /chats/
+Disallow: /rating.php
+Disallow: /charts.php
+Disallow: /company.php
+Disallow: /depository.php
+Disallow: /products/create.php
+Disallow: /products/edit.php
+Disallow: /products/delete.php
+
+# Разрешаем индексацию публичных страниц
+Allow: /login.php
+Allow: /register.php
+Allow: /forgot-password.php
+Allow: /products/catalog.php
+Allow: /products/
+
+# Запрещаем индексацию файлов с параметрами (чтобы избежать дублей)
+Disallow: /*?*
+Disallow: /*&*
+
+# Разрешаем индексацию статических файлов
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /storage/avatars/
+
+# Запрещаем индексацию временных и служебных файлов
+Disallow: /*.log$
+Disallow: /*.tmp$
+Disallow: /*.bak$
+Disallow: /*.old$
+Disallow: /*.backup$
+
+# Указываем расположение sitemap.xml (если будет создан)
+# Sitemap: https://xn--80af6ao.xn--p1ai/sitemap.xml
+
+# Специальные правила для популярных поисковых роботов
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard.php
+Disallow: /transactions/
+Disallow: /bills/
+Disallow: /chats/
+Disallow: /profile/
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard.php
+Disallow: /transactions/
+Disallow: /bills/
+Disallow: /chats/
+Disallow: /profile/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard.php
+Disallow: /transactions/
+Disallow: /bills/
+Disallow: /chats/
+Disallow: /profile/
+
+# Запрещаем агрессивных ботов и сканеров
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Exabot
+Disallow: /
+
+User-agent: Facebot
+Disallow: /
+
+# Запрещаем сканеры безопасности
+User-agent: nikto
+Disallow: /
+
+User-agent: sqlmap
+Disallow: /
+
+User-agent: masscan
+Disallow: /
+
+User-agent: nmap
+Disallow: /
+
+# Задержка между запросами (в секундах) - для защиты от перегрузки
+# Crawl-delay: 1
+
+
+
+
+
+
+
+
+
+
+
+
+

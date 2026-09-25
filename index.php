@@ -1,20 +1,19 @@
 <?php
 /**
- * Точка входа в корне проекта
- * Редирект обрабатывается через .htaccess -> public/index.php
- * Этот файл нужен только для обратной совместимости
+ * Точка входа в приложение ОГАС
+ * Редирект на страницу входа или на рабочий кабинет, если пользователь авторизован
  */
 
-// Прямой редирект на login.php или dashboard.php, чтобы избежать циклических редиректов
-// Сначала проверяем авторизацию
-require_once __DIR__ . '/src/bootstrap.php';
+require_once __DIR__ . '/../src/bootstrap.php';
 
 use OGAS\Services\Auth;
 
+// Если пользователь авторизован, перенаправляем на рабочий кабинет
 if (Auth::check()) {
-    header('Location: /dashboard.php', true, 301);
-} else {
-    header('Location: /login.php', true, 301);
+    header('Location: /dashboard.php');
+    exit;
 }
-exit;
 
+// Если не авторизован, перенаправляем на страницу входа
+header('Location: /login.php');
+exit;

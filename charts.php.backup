@@ -1,0 +1,331 @@
+<?php
+/**
+ * Страница с графиками и визуализацией данных
+ */
+
+require_once __DIR__ . '/../src/bootstrap.php';
+
+use OGAS\Services\Auth;
+use OGAS\Models\User;
+use OGAS\Models\Rating;
+use OGAS\Services\BillService;
+use OGAS\Services\TransactionService;
+
+Auth::requireAuth();
+$user = Auth::user();
+
+if (!$user) {
+    Auth::logout();
+    header('Location: /login.php');
+    exit;
+}
+
+// Получаем текущую статистику
+$rating = Rating::findByUserId($user->getId());
+$billStats = BillService::getStatistics($user->getId());
+$transactionStats = TransactionService::getStatistics($user->getId());
+
+$title = 'Графики и статистика';
+ob_start();
+?>
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h2>Графики и статистика</h2>
+        <a href="/dashboard.php" class="btn btn-secondary">← Назад</a>
+    </div>
+    
+    <div class="charts-container">
+        <!-- График изменения рейтинга -->
+        <div class="info-card chart-card">
+            <h3>Изменение рейтинга "Око"</h3>
+            <canvas id="ratingChart" width="400" height="200"></canvas>
+            <p class="chart-info">
+                <strong>Текущий рейтинг:</strong> <?= number_format($rating->getTotalRating(), 2) ?> баллов
+                | <strong>Дубли:</strong> <?= number_format($rating->getDoubles(), 2) ?>
+            </p>
+        </div>
+        
+        <!-- График баланса векселей -->
+        <div class="info-card chart-card">
+            <h3>Баланс векселей</h3>
+            <canvas id="billsChart" width="400" height="200"></canvas>
+            <p class="chart-info">
+                <strong>Выпущено:</strong> <?= $billStats['issued_count'] ?> (<?= number_format($billStats['issued_total'], 2, '.', ' ') ?> ₽)
+                | <strong>Получено:</strong> <?= $billStats['held_count'] ?> (<?= number_format($billStats['held_total'], 2, '.', ' ') ?> ₽)
+            </p>
+        </div>
+        
+        <!-- График динамики погашения векселей -->
+        <div class="info-card chart-card">
+            <h3>Динамика погашения векселей</h3>
+            <canvas id="paymentChart" width="400" height="200"></canvas>
+        </div>
+        
+        <!-- Круговая диаграмма своевременности погашения -->
+        <div class="info-card chart-card">
+            <h3>Своевременность погашения</h3>
+            <canvas id="paymentPieChart" width="400" height="200"></canvas>
+        </div>
+        
+        <!-- График статистики транзакций -->
+        <div class="info-card chart-card">
+            <h3>Статистика транзакций</h3>
+            <canvas id="transactionsChart" width="400" height="200"></canvas>
+            <p class="chart-info">
+                <strong>Всего:</strong> <?= $transactionStats['total'] ?>
+                | <strong>Завершённых:</strong> <?= $transactionStats['completed'] ?>
+                | <strong>Активных:</strong> <?= $transactionStats['active'] ?>
+            </p>
+        </div>
+        
+        <!-- График распределения транзакций по категориям -->
+        <div class="info-card chart-card">
+            <h3>Распределение транзакций по категориям</h3>
+            <canvas id="categoriesChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script>
+// График изменения рейтинга
+fetch('/api/charts.php?action=rating')
+    .then(response => response.json())
+    .then(data => {
+        const ctx = document.getElementById('ratingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Рейтинг'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Дубли'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки данных рейтинга:', error);
+        document.getElementById('ratingChart').parentElement.innerHTML = '<p style="color: red;">Ошибка загрузки данных</p>';
+    });
+
+// График баланса векселей
+fetch('/api/charts.php?action=bills_balance')
+    .then(response => response.json())
+    .then(data => {
+        const ctx = document.getElementById('billsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Сумма (₽)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки данных баланса:', error);
+        document.getElementById('billsChart').parentElement.innerHTML = '<p style="color: red;">Ошибка загрузки данных</p>';
+    });
+
+// График динамики погашения
+fetch('/api/charts.php?action=payment_dynamics')
+    .then(response => response.json())
+    .then(data => {
+        // Линейный график
+        const ctx = document.getElementById('paymentChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.labels,
+                datasets: data.datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Количество'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Сумма (₽)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+        
+        // Круговая диаграмма
+        if (data.pie) {
+            const pieCtx = document.getElementById('paymentPieChart').getContext('2d');
+            new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: data.pie.labels,
+                    datasets: [{
+                        data: data.pie.data,
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 99, 132, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 99, 132)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки данных погашения:', error);
+        document.getElementById('paymentChart').parentElement.innerHTML = '<p style="color: red;">Ошибка загрузки данных</p>';
+    });
+
+// График статистики транзакций
+fetch('/api/charts.php?action=transactions')
+    .then(response => response.json())
+    .then(data => {
+        const ctx = document.getElementById('transactionsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        },
+                        title: {
+                            display: true,
+                            text: 'Количество транзакций'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки данных транзакций:', error);
+        document.getElementById('transactionsChart').parentElement.innerHTML = '<p style="color: red;">Ошибка загрузки данных</p>';
+    });
+
+// График распределения по категориям
+fetch('/api/charts.php?action=categories_distribution')
+    .then(response => response.json())
+    .then(data => {
+        const ctx = document.getElementById('categoriesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed + ' транзакций';
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки данных по категориям:', error);
+        document.getElementById('categoriesChart').parentElement.innerHTML = '<p style="color: red;">Ошибка загрузки данных</p>';
+    });
+</script>
+<?php
+$content = ob_get_clean();
+include __DIR__ . '/../templates/base.php';
+
